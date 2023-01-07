@@ -17,8 +17,9 @@
 	"exclude":[
 		"node_modules",
 		".vscode-test",
-		".vscode-test",
-		"**/view/app/index.css",
-		"**/view/app/index.tsx"
+		"**/view/app/**"
+		// "**/view/app/index.css",
+		// "**/view/app/index.tsx",
+		// "**/view/app/tsconfig.json"
 	]
 }
