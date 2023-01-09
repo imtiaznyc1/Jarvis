@@ -1,5 +1,4 @@
 const path = require("path");
-
 module.exports = {
   entry: {
     configViewer: "./src/view/app/index.tsx"
@@ -29,6 +28,18 @@ module.exports = {
             loader: "css-loader"
           }
         ]
+      },
+      {
+        // 
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        use: [
+          {
+            loader:'file-loader',
+            // options: {
+            //   limit:20000
+            // }
+          }
+        ]
       }
     ]
   },
@@ -36,3 +47,5 @@ module.exports = {
     hints: false
   }
 };
+
+
