@@ -1,0 +1,38 @@
+.dLogo{
+    width:7%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:10%;
+}
+
+.discordTag{
+    text-align: center;
+}
+.dLogo:hover{
+    width:10%;
+    transition:1.5s;
+    cursor: pointer;
+}
+
+.logo{
+    width:70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.newUserIcon{
+    width:7%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:10%;
+
+}
+
+.newUserIcon:hover{
+    width:10%;
+    transition:1.5s;
+    cursor: pointer;
+}
