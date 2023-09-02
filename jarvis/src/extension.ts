@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-
+import { getWebviewContent } from './htmlWebview';
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -27,7 +27,9 @@ export function activate(context: vscode.ExtensionContext) {
 			'jarvis',
 			'Jarvis',
 			vscode.ViewColumn.Two,
-			{}
+			{
+				enableScripts: true
+			}
 		)
 
 		panel.webview.html = getWebviewContent()
@@ -38,19 +40,21 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 
-function getWebviewContent() {
-	return `<!DOCTYPE html>
-  <html lang="en">
-  <head>
-	  <meta charset="UTF-8">
-	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	  <title>Cat Coding</title>
-  </head>
-  <body>
-	  <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" width="300" />
-  </body>
-  </html>`;
-  }
+// function getWebviewContent() {
+// 	return `<!DOCTYPE html>
+//   <html lang="en">
+//   <head>
+// 	  <meta charset="UTF-8">
+// 	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+// 	  <title>Jarvis</title>
+//   </head>
+//   <body>
+// 	  <h1>Hello! This is Jarvis, your fellow assistant.</h1>
+// 	  <p>When you compile or run your code with errors, this page will populate with 
+// 	  list of potential answers for the issues appearing.</p>
+//   </body>
+//   </html>`;
+//   }
 
 // This method is called when your extension is deactivated
 export function deactivate() {}
