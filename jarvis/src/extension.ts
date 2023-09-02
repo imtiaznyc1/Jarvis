@@ -19,8 +19,38 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.showInformationMessage('Hello World from jarvis!');
 	});
 
+	let disposable2 = vscode.commands.registerCommand('jarvis.helloJarvis', () => {
+		// The code you place here will be executed every time your command is executed
+		// Display a message box to the user
+		vscode.window.showInformationMessage('At your service!');
+		const panel = vscode.window.createWebviewPanel(
+			'jarvis',
+			'Jarvis',
+			vscode.ViewColumn.Two,
+			{}
+		)
+
+		panel.webview.html = getWebviewContent()
+	});
+
 	context.subscriptions.push(disposable);
+	context.subscriptions.push(disposable2)
 }
+
+
+function getWebviewContent() {
+	return `<!DOCTYPE html>
+  <html lang="en">
+  <head>
+	  <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <title>Cat Coding</title>
+  </head>
+  <body>
+	  <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" width="300" />
+  </body>
+  </html>`;
+  }
 
 // This method is called when your extension is deactivated
 export function deactivate() {}

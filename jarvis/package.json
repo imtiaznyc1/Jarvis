@@ -16,6 +16,10 @@
       {
         "command": "jarvis.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command":"jarvis.helloJarvis",
+        "title":"Hello Jarvis"
       }
     ]
   },
