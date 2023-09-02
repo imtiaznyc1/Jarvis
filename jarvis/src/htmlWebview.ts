@@ -8,8 +8,24 @@ export function getWebviewContent() {
   </head>
   <body>
 	  <h1>Hello! This is Jarvis, your fellow assistant.</h1>
-	  <p>When you compile or run your code with errors, this page will populate with 
+	  <p>When you enter a session in VSCode, this page will populate with 
 	  list of potential answers for the issues appearing.</p>
+      
+      <p>
+      </p>
+
+      
+      <script>
+        var text = 'HELLO'
+        window.addEventListener('message', event => {
+            const value = event.data;
+
+            switch (value.command){
+                case 'bugs':
+                    text = "BUGS"
+            }
+        })
+      </script>
   </body>
   </html>`;
   }
