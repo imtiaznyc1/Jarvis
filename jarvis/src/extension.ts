@@ -2,6 +2,8 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { getWebviewContent } from './htmlWebview';
+import { userInfo } from 'os';
+import { stdout } from 'process';
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -44,28 +46,30 @@ export function activate(context: vscode.ExtensionContext) {
 		)
 
 		panel.webview.html = getWebviewContent()
+	});  
+
+	let disposable3 = vscode.commands.registerCommand('jarvis.debug', () => {
+		// The code you place here will be executed every time your command is executed
+		// Display a message box to the user
+		vscode.window.showInformationMessage('Parsing messages from debug console...');
+		let uB = vscode.languages.createDiagnosticCollection('userBugs')
+		let filePath = vscode.Uri.file('C:\\Users\\imtia\\PersonalProjects\\NewerJarvis\\Jarvis\\jarvis')
+		console.log('the file path is: ' + filePath)
+		console.log(uB.get(filePath))
+		console.log(stdout.toString())
+
+		const uri = vscode.window.activeTextEditor?.document.uri;
+		let diagnostics = vscode.languages.getDiagnostics(uri!); 
+		console.log(diagnostics)
+
+
 	});
 
 	context.subscriptions.push(disposable);
-	context.subscriptions.push(disposable2)
+	context.subscriptions.push(disposable2);
+	context.subscriptions.push(disposable3);
 }
 
-
-// function getWebviewContent() {
-// 	return `<!DOCTYPE html>
-//   <html lang="en">
-//   <head>
-// 	  <meta charset="UTF-8">
-// 	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-// 	  <title>Jarvis</title>
-//   </head>
-//   <body>
-// 	  <h1>Hello! This is Jarvis, your fellow assistant.</h1>
-// 	  <p>When you compile or run your code with errors, this page will populate with 
-// 	  list of potential answers for the issues appearing.</p>
-//   </body>
-//   </html>`;
-//   }
 
 // This method is called when your extension is deactivated
 export function deactivate() {}
