@@ -54,13 +54,26 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.showInformationMessage('Parsing messages from debug console...');
 		let uB = vscode.languages.createDiagnosticCollection('userBugs')
 		let filePath = vscode.Uri.file('C:\\Users\\imtia\\PersonalProjects\\NewerJarvis\\Jarvis\\jarvis')
-		console.log('the file path is: ' + filePath)
-		console.log(uB.get(filePath))
-		console.log(stdout.toString())
+		// console.log('the file path is: ' + filePath)
 
 		const uri = vscode.window.activeTextEditor?.document.uri;
-		let diagnostics = vscode.languages.getDiagnostics(uri!); 
-		console.log(diagnostics)
+		// console.log('' + uri)
+		if(uri){
+			let diagnostics = vscode.languages.getDiagnostics(uri!); 
+			diagnostics.forEach( function(value: vscode.Diagnostic){
+				console.log(value.message)
+			})
+		}else{
+			let diagnostics = vscode.languages.getDiagnostics();
+			console.log('your stoopid')
+			diagnostics.forEach(function(value){
+				if(value[1].length > 0)
+					console.log(value[1][0].message) 
+			})
+
+		}
+		
+		// console.log(diagnostics)
 
 
 	});
