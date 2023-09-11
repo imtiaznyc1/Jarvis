@@ -1,0 +1,1 @@
+document.getElementById("foundBugs").innerHTML += "<p>No bugs were found right now</p>";

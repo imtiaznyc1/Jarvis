@@ -10,18 +10,23 @@ export function activate(context: vscode.ExtensionContext) {
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "jarvis" is now active!');
+	console.log('Congratulations, your extension "darvis" is now active!');
 	vscode.window.showInformationMessage('At your service!');
 		const panel = vscode.window.createWebviewPanel(
-			'jarvis',
-			'Jarvis',
+			'darvis',
+			'darvis',
 			vscode.ViewColumn.Two,
 			{
 				enableScripts: true
 			}
 		)
-
-		panel.webview.html = getWebviewContent()
+		const onDiskPath = vscode.Uri.joinPath(context.extensionUri, 'src', 'assets', 'darvisLogoTransparent.png');
+		const onDiskPath2 = vscode.Uri.joinPath(context.extensionUri, 'src', 'script.js');
+		console.log(onDiskPath)
+		console.log(onDiskPath2)
+		const logo = panel.webview.asWebviewUri(onDiskPath);
+		const script = panel.webview.asWebviewUri(onDiskPath2);
+		panel.webview.html = getWebviewContent(logo, script)
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
@@ -29,26 +34,26 @@ export function activate(context: vscode.ExtensionContext) {
 	let disposable = vscode.commands.registerCommand('jarvis.helloWorld', () => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from jarvis!');
+		vscode.window.showInformationMessage('Hello World from Darvis!');
 	});
 
-	let disposable2 = vscode.commands.registerCommand('jarvis.helloJarvis', () => {
+	let disposable2 = vscode.commands.registerCommand('darvis.helloJarvis', () => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
 		vscode.window.showInformationMessage('At your service!');
 		const panel = vscode.window.createWebviewPanel(
-			'jarvis',
-			'Jarvis',
+			'darvis',
+			'Darvis',
 			vscode.ViewColumn.Two,
 			{
 				enableScripts: true
 			}
 		)
 
-		panel.webview.html = getWebviewContent()
+		panel.webview.html = getWebviewContent(logo, script)
 	});  
 
-	let disposable3 = vscode.commands.registerCommand('jarvis.debug', () => {
+	let disposable3 = vscode.commands.registerCommand('darvis.debug', () => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
 		vscode.window.showInformationMessage('Parsing messages from debug console...');
